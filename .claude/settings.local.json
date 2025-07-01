@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__context7__get-library-docs",
+      "Bash(docker compose:*)",
+      "Bash(ls:*)",
+      "Bash(mv:*)",
+      "Bash(curl:*)"
+    ],
+    "deny": []
+  }
+}
