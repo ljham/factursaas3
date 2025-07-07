@@ -40,8 +40,23 @@ export default function Clientes() {
     try {
       setLoading(true);
       setError(null);
-      const data = await apiClient.get('/api/clientes');
-      setClientes(data);
+      
+      // Try authenticated API first
+      try {
+        const data = await apiClient.get('/api/clientes');
+        setClientes(data);
+      } catch (authError) {
+        // If authentication fails, try test endpoint with seed data
+        console.log('Auth failed, trying test endpoint:', authError);
+        const response = await fetch('http://localhost:8000/api/clientes/test/user_test_seed_12345');
+        if (response.ok) {
+          const data = await response.json();
+          setClientes(data);
+          setError('Mostrando datos de prueba - Configure Clerk para usar datos reales');
+        } else {
+          throw new Error('No se pudieron cargar los clientes');
+        }
+      }
     } catch (err) {
       setError('Error loading clientes');
       console.error('Error loading clientes:', err);

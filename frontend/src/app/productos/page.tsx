@@ -40,10 +40,27 @@ export default function Productos() {
     try {
       setLoading(true);
       setError(null);
-      const params = new URLSearchParams();
-      params.append('solo_activos', soloActivos.toString());
-      const data = await apiClient.get(`/api/productos?${params.toString()}`);
-      setProductos(data);
+      
+      // Try authenticated API first
+      try {
+        const params = new URLSearchParams();
+        params.append('solo_activos', soloActivos.toString());
+        const data = await apiClient.get(`/api/productos?${params.toString()}`);
+        setProductos(data);
+      } catch (authError) {
+        // If authentication fails, try test endpoint with seed data
+        console.log('Auth failed, trying test endpoint:', authError);
+        const params = new URLSearchParams();
+        params.append('solo_activos', soloActivos.toString());
+        const response = await fetch(`http://localhost:8000/api/productos/test/user_test_seed_12345?${params.toString()}`);
+        if (response.ok) {
+          const data = await response.json();
+          setProductos(data);
+          setError('Mostrando datos de prueba - Configure Clerk para usar datos reales');
+        } else {
+          throw new Error('No se pudieron cargar los productos');
+        }
+      }
     } catch (err) {
       setError('Error loading productos');
       console.error('Error loading productos:', err);

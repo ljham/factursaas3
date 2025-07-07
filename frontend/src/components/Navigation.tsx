@@ -9,6 +9,7 @@ const navItems = [
   { href: '/clientes', label: 'Clientes' },
   { href: '/productos', label: 'Productos' },
   { href: '/facturas', label: 'Facturas' },
+  { href: '/profile', label: 'Perfil' },
 ];
 
 export default function Navigation() {
@@ -44,12 +45,44 @@ export default function Navigation() {
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            {user && (
-              <span className="text-sm text-gray-700">
-                Hola, {user.firstName || user.emailAddresses[0].emailAddress}
-              </span>
+            {user ? (
+              <>
+                <span className="text-sm text-gray-700">
+                  Hola, {user.firstName || user.emailAddresses[0].emailAddress}
+                </span>
+                <UserButton 
+                  afterSignOutUrl="/"
+                  appearance={{
+                    elements: {
+                      avatarBox: "w-8 h-8",
+                      userButtonPopoverCard: "shadow-lg border",
+                      userButtonPopoverActionButton: "hover:bg-gray-50"
+                    }
+                  }}
+                  userProfileProps={{
+                    appearance: {
+                      elements: {
+                        card: "shadow-lg",
+                        formButtonPrimary: "bg-blue-600 hover:bg-blue-700"
+                      }
+                    },
+                    routing: "hash"
+                  }}
+                />
+              </>
+            ) : (
+              <div className="flex items-center space-x-2">
+                <span className="text-sm text-gray-500">
+                  No autenticado
+                </span>
+                <Link 
+                  href="/sign-in"
+                  className="text-sm text-blue-600 hover:text-blue-700 font-medium"
+                >
+                  Iniciar Sesión
+                </Link>
+              </div>
             )}
-            <UserButton afterSignOutUrl="/" />
           </div>
         </div>
       </div>

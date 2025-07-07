@@ -21,10 +21,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
     );
   }
 
-  if (!isSignedIn) {
-    return <div>{children}</div>;
-  }
-
+  // Always show layout with navigation in development/demo mode
   return (
     <div className="min-h-screen bg-gray-50">
       <Navigation />

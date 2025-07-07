@@ -10,8 +10,9 @@ logger = logging.getLogger(__name__)
 # Consistent test user ID for all seed data
 SEED_USER_ID = "user_test_seed_12345"
 
-def get_sample_clients():
+def get_sample_clients(user_id: str = None):
     """Generate sample client data with realistic Spanish business information"""
+    actual_user_id = user_id or SEED_USER_ID
     return [
         {
             "nombre": "Construcciones García S.L.",
@@ -22,7 +23,7 @@ def get_sample_clients():
             "pais": "España",
             "email": "admin@construccionesgarcia.es",
             "telefono": "+34 91 123 4567",
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Panadería El Trigo Dorado",
@@ -33,7 +34,7 @@ def get_sample_clients():
             "pais": "España",
             "email": "info@trigoDorado.es",
             "telefono": "+34 93 987 6543",
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Tecnología Avanzada S.A.",
@@ -44,7 +45,7 @@ def get_sample_clients():
             "pais": "España",
             "email": "ventas@tecavanzada.com",
             "telefono": "+34 96 456 7890",
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Restaurante Casa Pepe",
@@ -55,7 +56,7 @@ def get_sample_clients():
             "pais": "España",
             "email": "reservas@casapepe.es",
             "telefono": "+34 95 234 5678",
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Autoservicio Los Pinos",
@@ -66,7 +67,7 @@ def get_sample_clients():
             "pais": "España",
             "email": "contacto@lospinos.com",
             "telefono": "+34 94 876 5432",
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Floristería Bella Flor",
@@ -77,7 +78,7 @@ def get_sample_clients():
             "pais": "España",
             "email": "pedidos@bellaflor.es",
             "telefono": "+34 95 567 8901",
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Consultoría Empresarial López",
@@ -88,7 +89,7 @@ def get_sample_clients():
             "pais": "España",
             "email": "info@consultorialopez.com",
             "telefono": "+34 97 678 9012",
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Librería Cervantes",
@@ -99,12 +100,13 @@ def get_sample_clients():
             "pais": "España",
             "email": "libros@cervantes.es",
             "telefono": "+34 92 789 0123",
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         }
     ]
 
-def get_sample_products():
+def get_sample_products(user_id: str = None):
     """Generate sample product/service data with realistic pricing and IVA"""
+    actual_user_id = user_id or SEED_USER_ID
     return [
         {
             "nombre": "Consultoría de Desarrollo Web",
@@ -114,7 +116,7 @@ def get_sample_products():
             "es_servicio": True,
             "codigo": "CONS-WEB-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Hosting Web Anual",
@@ -124,7 +126,7 @@ def get_sample_products():
             "es_servicio": True,
             "codigo": "HOST-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Ordenador Portátil",
@@ -134,7 +136,7 @@ def get_sample_products():
             "es_servicio": False,
             "codigo": "PORT-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Licencia Software Contabilidad",
@@ -144,7 +146,7 @@ def get_sample_products():
             "es_servicio": True,
             "codigo": "LIC-CONT-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Mesa de Oficina",
@@ -154,7 +156,7 @@ def get_sample_products():
             "es_servicio": False,
             "codigo": "MESA-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Mantenimiento Mensual",
@@ -164,7 +166,7 @@ def get_sample_products():
             "es_servicio": True,
             "codigo": "MANT-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Impresora Multifunción",
@@ -174,7 +176,7 @@ def get_sample_products():
             "es_servicio": False,
             "codigo": "IMP-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Formación en Excel",
@@ -184,7 +186,7 @@ def get_sample_products():
             "es_servicio": True,
             "codigo": "FORM-EXC-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Monitor 24 pulgadas",
@@ -194,7 +196,7 @@ def get_sample_products():
             "es_servicio": False,
             "codigo": "MON-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Backup en la Nube",
@@ -204,7 +206,7 @@ def get_sample_products():
             "es_servicio": True,
             "codigo": "BACK-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Teclado Inalámbrico",
@@ -214,7 +216,7 @@ def get_sample_products():
             "es_servicio": False,
             "codigo": "TEC-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Auditoría de Seguridad",
@@ -224,7 +226,7 @@ def get_sample_products():
             "es_servicio": True,
             "codigo": "AUD-SEC-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Disco Duro Externo 1TB",
@@ -234,7 +236,7 @@ def get_sample_products():
             "es_servicio": False,
             "codigo": "HDD-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Soporte Técnico Remoto",
@@ -244,7 +246,7 @@ def get_sample_products():
             "es_servicio": True,
             "codigo": "SUP-REM-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         },
         {
             "nombre": "Webcam HD",
@@ -254,26 +256,27 @@ def get_sample_products():
             "es_servicio": False,
             "codigo": "CAM-001",
             "activo": True,
-            "user_id": SEED_USER_ID
+            "user_id": actual_user_id
         }
     ]
 
-def seed_database():
+def seed_database(user_id: str = None):
     """Populate database with sample data"""
+    actual_user_id = user_id or SEED_USER_ID
     db = SessionLocal()
     try:
-        logger.info("Starting database seeding...")
+        logger.info(f"Starting database seeding for user {actual_user_id}...")
         
         # Check if seed data already exists
-        existing_clients = db.query(Cliente).filter(Cliente.user_id == SEED_USER_ID).count()
-        existing_products = db.query(Producto).filter(Producto.user_id == SEED_USER_ID).count()
+        existing_clients = db.query(Cliente).filter(Cliente.user_id == actual_user_id).count()
+        existing_products = db.query(Producto).filter(Producto.user_id == actual_user_id).count()
         
         if existing_clients > 0 or existing_products > 0:
             logger.warning(f"Seed data already exists: {existing_clients} clients, {existing_products} products")
             return {"message": "Seed data already exists", "clients": existing_clients, "products": existing_products}
         
         # Insert sample clients
-        clients_data = get_sample_clients()
+        clients_data = get_sample_clients(user_id=actual_user_id)
         clients_created = 0
         for client_data in clients_data:
             client = Cliente(**client_data)
@@ -282,7 +285,7 @@ def seed_database():
             clients_created += 1
         
         # Insert sample products
-        products_data = get_sample_products()
+        products_data = get_sample_products(user_id=actual_user_id)
         products_created = 0
         for product_data in products_data:
             product = Producto(**product_data)

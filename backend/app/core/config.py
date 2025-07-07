@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     POSTGRES_PORT: int = Field(default=5432, env="POSTGRES_PORT")
     
     CLERK_SECRET_KEY: Optional[str] = Field(default=None, env="CLERK_SECRET_KEY")
+    NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: Optional[str] = Field(default=None, env="NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY")
 
     @property
     def DATABASE_URL(self) -> str:

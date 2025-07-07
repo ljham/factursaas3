@@ -113,3 +113,20 @@ def delete_producto(
     db.delete(db_producto)
     db.commit()
     return None
+
+@router.get("/test/{user_id}", response_model=List[ProductoResponse])
+def get_productos_test(
+    user_id: str,
+    skip: int = 0,
+    limit: int = 100,
+    solo_activos: bool = True,
+    db: Session = Depends(get_db)
+):
+    """Get all products for a specific user (test endpoint, no auth required)"""
+    query = db.query(Producto).filter(Producto.user_id == user_id)
+    
+    if solo_activos:
+        query = query.filter(Producto.activo == True)
+    
+    productos = query.offset(skip).limit(limit).all()
+    return productos

@@ -109,3 +109,16 @@ def delete_cliente(
     db.delete(db_cliente)
     db.commit()
     return None
+
+@router.get("/test/{user_id}", response_model=List[ClienteResponse])
+def get_clientes_test(
+    user_id: str,
+    skip: int = 0,
+    limit: int = 100,
+    db: Session = Depends(get_db)
+):
+    """Get all clients for a specific user (test endpoint, no auth required)"""
+    clientes = db.query(Cliente).filter(
+        Cliente.user_id == user_id
+    ).offset(skip).limit(limit).all()
+    return clientes
